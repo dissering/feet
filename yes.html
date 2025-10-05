@@ -18,102 +18,97 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            color: #00ff00;
         }
 
         #login-screen {
-            background: #ffffff;
-            padding: 50px 40px;
-            border-radius: 2px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            text-align: center;
-            max-width: 400px;
+            background: #0c0c0c;
+            padding: 40px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            max-width: 500px;
             width: 90%;
         }
 
         #login-screen h1 {
-            margin-bottom: 40px;
-            color: #000000;
-            font-weight: 300;
-            font-size: 24px;
-            letter-spacing: 1px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin-bottom: 30px;
+            color: #00ff00;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 2px;
         }
 
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
+        .input-line {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
         }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #666;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        .input-line label {
+            color: #00ff00;
+            margin-right: 10px;
+            min-width: 100px;
         }
 
         .input-field {
-            width: 100%;
-            padding: 14px 16px;
-            font-size: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 2px;
-            transition: border-color 0.3s;
+            flex: 1;
+            padding: 8px;
+            font-size: 14px;
+            border: none;
+            background: transparent;
+            color: #00ff00;
             font-family: 'Courier New', Courier, monospace;
+            border-bottom: 1px solid #00ff00;
         }
 
         .input-field:focus {
             outline: none;
-            border-color: #000000;
+            border-bottom: 1px solid #00ff00;
+            box-shadow: 0 1px 0 #00ff00;
         }
 
         #login-btn {
             width: 100%;
-            padding: 14px;
+            padding: 10px;
             font-size: 14px;
-            background: #000000;
-            color: white;
-            border: none;
-            border-radius: 2px;
+            background: transparent;
+            color: #00ff00;
+            border: 1px solid #00ff00;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-            margin-top: 10px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         #login-btn:hover {
-            background: #333333;
+            background: #00ff00;
+            color: #000000;
         }
 
         .error {
-            color: #d32f2f;
+            color: #ff0000;
             margin-top: 15px;
-            font-size: 13px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 12px;
         }
 
         #chat-screen {
             display: none;
             width: 90%;
-            max-width: 900px;
+            max-width: 1000px;
             height: 90vh;
-            background: #000000;
-            border: 1px solid #333333;
-            border-radius: 2px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            background: #0c0c0c;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
             flex-direction: column;
         }
 
         #chat-header {
             padding: 15px 20px;
-            background: #1a1a1a;
+            background: #000000;
             color: #00ff00;
-            border-bottom: 1px solid #333333;
+            border-bottom: 1px solid #00ff00;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -122,113 +117,105 @@
         #chat-header h2 {
             font-weight: 400;
             font-size: 14px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         #logout-btn {
-            padding: 6px 16px;
+            padding: 5px 15px;
             background: transparent;
-            border: 1px solid #333333;
+            border: 1px solid #00ff00;
             color: #00ff00;
-            border-radius: 2px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             font-family: 'Courier New', Courier, monospace;
         }
 
         #logout-btn:hover {
-            background: #1a1a1a;
-            border-color: #00ff00;
+            background: #00ff00;
+            color: #000000;
         }
 
         #messages {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
-            background: #000000;
+            background: #0c0c0c;
             color: #00ff00;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        .message {
-            margin-bottom: 8px;
+        .message-line {
+            margin-bottom: 4px;
             word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        .message-username {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .message-text {
+        .message-line::before {
+            content: '$ ';
             color: #00ff00;
         }
 
         .message-image {
             max-width: 60%;
-            margin-top: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #333333;
+            margin: 10px 0 10px 12px;
+            border: 1px solid #00ff00;
             display: block;
         }
 
         #input-area {
-            padding: 20px;
+            padding: 15px 20px;
             background: #000000;
-            border-top: 1px solid #333333;
+            border-top: 1px solid #00ff00;
         }
 
         #input-container {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
         }
 
         #prompt-symbol {
             color: #00ff00;
             font-size: 14px;
+            font-weight: bold;
         }
 
         #message-input {
             flex: 1;
-            padding: 8px 12px;
-            border: 1px solid #333333;
-            border-radius: 2px;
+            padding: 8px 0;
+            border: none;
             font-size: 14px;
             resize: none;
             font-family: 'Courier New', Courier, monospace;
-            background: #000000;
+            background: transparent;
             color: #00ff00;
         }
 
         #message-input:focus {
             outline: none;
-            border-color: #00ff00;
         }
 
         .input-btn {
-            padding: 8px;
-            background: #1a1a1a;
+            padding: 5px 10px;
+            background: transparent;
             color: #00ff00;
-            border: 1px solid #333333;
-            border-radius: 2px;
+            border: 1px solid #00ff00;
             cursor: pointer;
-            width: 36px;
-            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 12px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .input-btn:hover {
-            background: #2a2a2a;
-            border-color: #00ff00;
+            background: #00ff00;
+            color: #000000;
         }
 
         #image-input {
@@ -240,7 +227,7 @@
         }
 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
@@ -248,48 +235,56 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #333333;
-            border-radius: 2px;
+            background: #00ff00;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #444444;
+            background: #00cc00;
         }
 
         ::selection {
             background: #00ff00;
             color: #000000;
         }
+
+        .cursor-blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
     <div id="login-screen">
-        <h1>SECURE CHAT</h1>
-        <div class="input-group">
-            <label for="username-input">Username</label>
-            <input type="text" id="username-input" class="input-field" placeholder="Enter your username" />
+        <h1>TERMINAL LOGIN</h1>
+        <div class="input-line">
+            <label>username:</label>
+            <input type="text" id="username-input" class="input-field" />
         </div>
-        <div class="input-group">
-            <label for="password-input">Password</label>
-            <input type="password" id="password-input" class="input-field" placeholder="Enter password" />
+        <div class="input-line">
+            <label>password:</label>
+            <input type="password" id="password-input" class="input-field" />
         </div>
-        <button id="login-btn">Enter</button>
+        <button id="login-btn">Connect</button>
         <div id="error-message" class="error"></div>
     </div>
 
     <div id="chat-screen">
         <div id="chat-header">
-            <h2>TERMINAL CHAT</h2>
-            <button id="logout-btn">Logout</button>
+            <h2>TERMINAL CHAT SESSION</h2>
+            <button id="logout-btn">Exit</button>
         </div>
         <div id="messages"></div>
         <div id="input-area">
             <div id="input-container">
-                <span id="prompt-symbol">></span>
-                <textarea id="message-input" rows="1" placeholder="Type a message..."></textarea>
-                <label for="image-input" class="input-btn" title="Upload image">📎</label>
+                <span id="prompt-symbol">$</span>
+                <textarea id="message-input" rows="1" placeholder=""></textarea>
+                <button class="input-btn" id="image-btn">IMG</button>
                 <input type="file" id="image-input" accept="image/*" />
-                <button id="send-btn" class="input-btn">↵</button>
+                <button id="send-btn" class="input-btn">SEND</button>
             </div>
         </div>
     </div>
@@ -319,6 +314,7 @@
             const messagesContainer = document.getElementById('messages');
             const messageInput = document.getElementById('message-input');
             const sendBtn = document.getElementById('send-btn');
+            const imageBtn = document.getElementById('image-btn');
             const imageInput = document.getElementById('image-input');
 
             if (currentUsername) {
@@ -338,7 +334,7 @@
                 const password = passwordInput.value;
 
                 if (!username) {
-                    errorMessage.textContent = 'Please enter a username';
+                    errorMessage.textContent = 'ERROR: username required';
                     usernameInput.focus();
                     return;
                 }
@@ -352,7 +348,7 @@
                     messageInput.focus();
                     errorMessage.textContent = '';
                 } else {
-                    errorMessage.textContent = 'Incorrect password';
+                    errorMessage.textContent = 'ERROR: access denied';
                     passwordInput.value = '';
                     passwordInput.focus();
                 }
@@ -366,6 +362,8 @@
             });
 
             sendBtn.addEventListener('click', sendMessage);
+            imageBtn.addEventListener('click', () => imageInput.click());
+            
             messageInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
@@ -422,35 +420,24 @@
             }
 
             function displayMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message';
-
                 if (message.type === 'text') {
-                    const usernameSpan = document.createElement('span');
-                    usernameSpan.className = 'message-username';
-                    usernameSpan.textContent = message.username;
-
-                    const textSpan = document.createElement('span');
-                    textSpan.className = 'message-text';
-                    textSpan.textContent = ' > ' + message.text;
-
-                    messageDiv.appendChild(usernameSpan);
-                    messageDiv.appendChild(textSpan);
+                    const messageLine = document.createElement('div');
+                    messageLine.className = 'message-line';
+                    messageLine.textContent = `${message.username} > ${message.text}`;
+                    messagesContainer.appendChild(messageLine);
                 } else if (message.type === 'gif' || message.type === 'image') {
-                    const usernameSpan = document.createElement('span');
-                    usernameSpan.className = 'message-username';
-                    usernameSpan.textContent = message.username + ' > [image]';
-                    messageDiv.appendChild(usernameSpan);
+                    const messageLine = document.createElement('div');
+                    messageLine.className = 'message-line';
+                    messageLine.textContent = `${message.username} > [image attached]`;
+                    messagesContainer.appendChild(messageLine);
 
                     const img = document.createElement('img');
                     img.className = 'message-image';
                     img.src = message.type === 'gif' ? message.url : message.data;
                     img.alt = 'Image';
-                    messageDiv.appendChild(document.createElement('br'));
-                    messageDiv.appendChild(img);
+                    messagesContainer.appendChild(img);
                 }
 
-                messagesContainer.appendChild(messageDiv);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
             }
 
