@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #login-screen {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        #login-screen h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        #password-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        #password-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #login-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #login-btn:hover {
+            background: #5568d3;
+        }
+
+        .error {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        #chat-screen {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            height: 90vh;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            flex-direction: column;
+        }
+
+        #chat-header {
+            padding: 20px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #logout-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid white;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        #messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f5f5f5;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .message.own {
+            align-items: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            word-wrap: break-word;
+        }
+
+        .message.own .message-content {
+            background: #667eea;
+            color: white;
+        }
+
+        .message-content img, .message-content video {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        #input-area {
+            padding: 20px;
+            background: white;
+            border-radius: 0 0 15px 15px;
+            border-top: 1px solid #eee;
+        }
+
+        #input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #message-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            resize: none;
+            font-family: inherit;
+        }
+
+        #message-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-btn {
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+
+        .input-btn:hover {
+            background: #5568d3;
+        }
+
+        #image-input {
+            display: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-screen">
+        <h1>🔒 Secure Chat</h1>
+        <input type="password" id="password-input" placeholder="Enter password" />
+        <button id="login-btn">Enter</button>
+        <div id="error-message" class="error"></div>
+    </div>
+
+    <div id="chat-screen">
+        <div id="chat-header">
+            <h2>💬 Chat Room</h2>
+            <button id="logout-btn">Logout</button>
+        </div>
+        <div id="messages"></div>
+        <div id="input-area">
+            <div id="input-container">
+                <textarea id="message-input" rows="1" placeholder="Type a message..."></textarea>
+                <label for="image-input" class="input-btn" title="Upload image">📎</label>
+                <input type="file" id="image-input" accept="image/*" />
+                <button id="send-btn" class="input-btn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PASSWORD = "67";
+        let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+
+        const loginScreen = document.getElementById('login-screen');
+        const chatScreen = document.getElementById('chat-screen');
+        const passwordInput = document.getElementById('password-input');
+        const loginBtn = document.getElementById('login-btn');
+        const errorMessage = document.getElementById('error-message');
+        const logoutBtn = document.getElementById('logout-btn');
+        const messagesContainer = document.getElementById('messages');
+        const messageInput = document.getElementById('message-input');
+        const sendBtn = document.getElementById('send-btn');
+        const imageInput = document.getElementById('image-input');
+
+        loginBtn.addEventListener('click', login);
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') login();
+        });
+
+        function login() {
+            if (passwordInput.value === PASSWORD) {
+                loginScreen.classList.add('hidden');
+                chatScreen.style.display = 'flex';
+                loadMessages();
+                messageInput.focus();
+            } else {
+                errorMessage.textContent = 'Incorrect password!';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        logoutBtn.addEventListener('click', () => {
+            chatScreen.style.display = 'none';
+            loginScreen.classList.remove('hidden');
+            passwordInput.value = '';
+            errorMessage.textContent = '';
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (!text) return;
+
+            const message = {
+                text: text,
+                timestamp: new Date().toISOString(),
+                type: 'text'
+            };
+
+            if (isDiscordMediaUrl(text)) {
+                message.type = 'gif';
+                message.url = text;
+            }
+
+            messages.push(message);
+            saveMessages();
+            displayMessage(message);
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+        }
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const message = {
+                        type: 'image',
+                        data: event.target.result,
+                        timestamp: new Date().toISOString()
+                    };
+                    messages.push(message);
+                    saveMessages();
+                    displayMessage(message);
+                };
+                reader.readAsDataURL(file);
+                imageInput.value = '';
+            }
+        });
+
+        function isDiscordMediaUrl(text) {
+            return text.includes('discord') && 
+                   (text.includes('.gif') || text.includes('.png') || text.includes('.jpg') || text.includes('.webp'));
+        }
+
+        function displayMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message own';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+
+            if (message.type === 'text') {
+                contentDiv.textContent = message.text;
+            } else if (message.type === 'gif') {
+                const img = document.createElement('img');
+                img.src = message.url;
+                img.alt = 'Discord GIF';
+                contentDiv.appendChild(img);
+            } else if (message.type === 'image') {
+                const img = document.createElement('img');
+                img.src = message.data;
+                img.alt = 'Uploaded image';
+                contentDiv.appendChild(img);
+            }
+
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'message-time';
+            timeDiv.textContent = new Date(message.timestamp).toLocaleTimeString();
+
+            messageDiv.appendChild(contentDiv);
+            messageDiv.appendChild(timeDiv);
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function loadMessages() {
+            messagesContainer.innerHTML = '';
+            messages.forEach(displayMessage);
+        }
+
+        function saveMessages() {
+            localStorage.setItem('chatMessages', JSON.stringify(messages));
+        }
+
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+    </script>
+</body>
+</html>
