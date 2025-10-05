@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000000;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -21,101 +21,132 @@
         }
 
         #login-screen {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             text-align: center;
             max-width: 400px;
             width: 90%;
         }
 
         #login-screen h1 {
-            margin-bottom: 30px;
-            color: #333;
+            margin-bottom: 40px;
+            color: #000000;
+            font-weight: 300;
+            font-size: 24px;
+            letter-spacing: 1px;
         }
 
-        #password-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+        .input-group {
             margin-bottom: 20px;
-            transition: border-color 0.3s;
+            text-align: left;
         }
 
-        #password-input:focus {
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .input-field:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #000000;
         }
 
         #login-btn {
             width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            background: #667eea;
+            padding: 14px;
+            font-size: 14px;
+            background: #000000;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 2px;
             cursor: pointer;
             transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-top: 10px;
         }
 
         #login-btn:hover {
-            background: #5568d3;
+            background: #333333;
         }
 
         .error {
-            color: #e74c3c;
-            margin-top: 10px;
-            font-size: 14px;
+            color: #d32f2f;
+            margin-top: 15px;
+            font-size: 13px;
         }
 
         #chat-screen {
             display: none;
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             height: 90vh;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #ffffff;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             flex-direction: column;
         }
 
         #chat-header {
-            padding: 20px;
-            background: #667eea;
+            padding: 25px 30px;
+            background: #000000;
             color: white;
-            border-radius: 15px 15px 0 0;
+            border-radius: 2px 2px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        #chat-header h2 {
+            font-weight: 300;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
         #logout-btn {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid white;
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
             color: white;
-            border-radius: 5px;
+            border-radius: 2px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         #logout-btn:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
         }
 
         #messages {
             flex: 1;
-            padding: 20px;
+            padding: 30px;
             overflow-y: auto;
-            background: #f5f5f5;
+            background: #fafafa;
         }
 
         .message {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -125,51 +156,63 @@
             align-items: flex-end;
         }
 
+        .message-username {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
         .message-content {
-            max-width: 70%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 60%;
+            padding: 12px 18px;
+            border-radius: 2px;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             word-wrap: break-word;
+            border: 1px solid #e0e0e0;
         }
 
         .message.own .message-content {
-            background: #667eea;
+            background: #000000;
             color: white;
+            border: 1px solid #000000;
         }
 
-        .message-content img, .message-content video {
+        .message-content img {
             max-width: 100%;
-            border-radius: 10px;
-            margin-top: 5px;
+            border-radius: 2px;
+            margin-top: 8px;
             display: block;
         }
 
         .message-time {
-            font-size: 11px;
+            font-size: 10px;
             color: #999;
-            margin-top: 5px;
+            margin-top: 6px;
+            letter-spacing: 0.3px;
         }
 
         #input-area {
-            padding: 20px;
-            background: white;
-            border-radius: 0 0 15px 15px;
-            border-top: 1px solid #eee;
+            padding: 25px 30px;
+            background: #ffffff;
+            border-radius: 0 0 2px 2px;
+            border-top: 1px solid #e0e0e0;
         }
 
         #input-container {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: center;
         }
 
         #message-input {
             flex: 1;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 25px;
+            padding: 12px 18px;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
             font-size: 14px;
             resize: none;
             font-family: inherit;
@@ -177,27 +220,27 @@
 
         #message-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #000000;
         }
 
         .input-btn {
-            padding: 10px 15px;
-            background: #667eea;
+            padding: 12px;
+            background: #000000;
             color: white;
             border: none;
-            border-radius: 50%;
+            border-radius: 2px;
             cursor: pointer;
-            width: 45px;
-            height: 45px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background 0.3s;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .input-btn:hover {
-            background: #5568d3;
+            background: #333333;
         }
 
         #image-input {
@@ -207,19 +250,43 @@
         .hidden {
             display: none !important;
         }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cccccc;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999999;
+        }
     </style>
 </head>
 <body>
     <div id="login-screen">
-        <h1>🔒 Secure Chat</h1>
-        <input type="password" id="password-input" placeholder="Enter password" />
+        <h1>SECURE CHAT</h1>
+        <div class="input-group">
+            <label for="username-input">Username</label>
+            <input type="text" id="username-input" class="input-field" placeholder="Enter your username" />
+        </div>
+        <div class="input-group">
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input" class="input-field" placeholder="Enter password" />
+        </div>
         <button id="login-btn">Enter</button>
         <div id="error-message" class="error"></div>
     </div>
 
     <div id="chat-screen">
         <div id="chat-header">
-            <h2>💬 Chat Room</h2>
+            <h2>CHAT ROOM</h2>
             <button id="logout-btn">Logout</button>
         </div>
         <div id="messages"></div>
@@ -236,9 +303,11 @@
     <script>
         const PASSWORD = "67";
         let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+        let currentUsername = localStorage.getItem('currentUsername') || '';
 
         const loginScreen = document.getElementById('login-screen');
         const chatScreen = document.getElementById('chat-screen');
+        const usernameInput = document.getElementById('username-input');
         const passwordInput = document.getElementById('password-input');
         const loginBtn = document.getElementById('login-btn');
         const errorMessage = document.getElementById('error-message');
@@ -248,19 +317,38 @@
         const sendBtn = document.getElementById('send-btn');
         const imageInput = document.getElementById('image-input');
 
+        if (currentUsername) {
+            usernameInput.value = currentUsername;
+        }
+
         loginBtn.addEventListener('click', login);
         passwordInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') login();
         });
+        usernameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') passwordInput.focus();
+        });
 
         function login() {
-            if (passwordInput.value === PASSWORD) {
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!username) {
+                errorMessage.textContent = 'Please enter a username';
+                usernameInput.focus();
+                return;
+            }
+
+            if (password === PASSWORD) {
+                currentUsername = username;
+                localStorage.setItem('currentUsername', currentUsername);
                 loginScreen.classList.add('hidden');
                 chatScreen.style.display = 'flex';
                 loadMessages();
                 messageInput.focus();
+                errorMessage.textContent = '';
             } else {
-                errorMessage.textContent = 'Incorrect password!';
+                errorMessage.textContent = 'Incorrect password';
                 passwordInput.value = '';
                 passwordInput.focus();
             }
@@ -288,7 +376,8 @@
             const message = {
                 text: text,
                 timestamp: new Date().toISOString(),
-                type: 'text'
+                type: 'text',
+                username: currentUsername
             };
 
             if (isDiscordMediaUrl(text)) {
@@ -311,7 +400,8 @@
                     const message = {
                         type: 'image',
                         data: event.target.result,
-                        timestamp: new Date().toISOString()
+                        timestamp: new Date().toISOString(),
+                        username: currentUsername
                     };
                     messages.push(message);
                     saveMessages();
@@ -329,7 +419,15 @@
 
         function displayMessage(message) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = 'message own';
+            messageDiv.className = 'message';
+            
+            if (message.username === currentUsername) {
+                messageDiv.classList.add('own');
+            }
+
+            const usernameDiv = document.createElement('div');
+            usernameDiv.className = 'message-username';
+            usernameDiv.textContent = message.username;
 
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
@@ -352,6 +450,7 @@
             timeDiv.className = 'message-time';
             timeDiv.textContent = new Date(message.timestamp).toLocaleTimeString();
 
+            messageDiv.appendChild(usernameDiv);
             messageDiv.appendChild(contentDiv);
             messageDiv.appendChild(timeDiv);
             messagesContainer.appendChild(messageDiv);
