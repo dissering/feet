@@ -254,7 +254,7 @@
 
     <div id="chat-screen">
         <div id="chat-header">
-            <span id="status">Connected</span>
+            <span id="status">Connecting...</span>
             <button id="logout-btn">Exit</button>
         </div>
         <div id="messages"></div>
@@ -269,7 +269,10 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getDatabase, ref, push, onChildAdded, limitToLast, query } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
         const aboutBlank = window.open('about:blank', '_blank');
         if (aboutBlank) {
             aboutBlank.document.write(document.documentElement.outerHTML);
@@ -280,8 +283,21 @@
         }
 
         function initChat() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyDny9l8kZXL5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5",
+                authDomain: "terminal-chat-demo.firebaseapp.com",
+                databaseURL: "https://terminal-chat-demo-default-rtdb.firebaseio.com",
+                projectId: "terminal-chat-demo",
+                storageBucket: "terminal-chat-demo.appspot.com",
+                messagingSenderId: "123456789012",
+                appId: "1:123456789012:web:abcdef123456"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+            const messagesRef = ref(database, 'messages');
+
             const PASSWORD = "67";
-            const CHANNEL_ID = 'terminal-chat-' + window.location.hostname;
             let currentUsername = localStorage.getItem('currentUsername') || '';
 
             const loginScreen = document.getElementById('login-screen');
@@ -301,12 +317,6 @@
             if (currentUsername) {
                 usernameInput.value = currentUsername;
             }
-
-            const bc = new BroadcastChannel(CHANNEL_ID);
-
-            bc.onmessage = (event) => {
-                displayMessage(event.data);
-            };
 
             loginBtn.addEventListener('click', login);
             passwordInput.addEventListener('keypress', (e) => {
@@ -331,14 +341,24 @@
                     localStorage.setItem('currentUsername', currentUsername);
                     loginScreen.classList.add('hidden');
                     chatScreen.style.display = 'flex';
-                    loadMessages();
                     messageInput.focus();
                     errorMessage.textContent = '';
+                    loadMessages();
                 } else {
                     errorMessage.textContent = 'ERROR: access denied';
                     passwordInput.value = '';
                     passwordInput.focus();
                 }
+            }
+
+            function loadMessages() {
+                const recentMessagesQuery = query(messagesRef, limitToLast(50));
+                
+                onChildAdded(recentMessagesQuery, (snapshot) => {
+                    const message = snapshot.val();
+                    displayMessage(message);
+                    statusEl.textContent = 'Connected';
+                });
             }
 
             logoutBtn.addEventListener('click', () => {
@@ -364,7 +384,7 @@
 
                 const message = {
                     text: text,
-                    timestamp: new Date().toISOString(),
+                    timestamp: Date.now(),
                     type: 'text',
                     username: currentUsername
                 };
@@ -374,9 +394,7 @@
                     message.url = text;
                 }
 
-                bc.postMessage(message);
-                saveMessage(message);
-                displayMessage(message);
+                push(messagesRef, message);
                 messageInput.value = '';
                 messageInput.style.height = 'auto';
             }
@@ -389,12 +407,10 @@
                         const message = {
                             type: 'image',
                             data: event.target.result,
-                            timestamp: new Date().toISOString(),
+                            timestamp: Date.now(),
                             username: currentUsername
                         };
-                        bc.postMessage(message);
-                        saveMessage(message);
-                        displayMessage(message);
+                        push(messagesRef, message);
                     };
                     reader.readAsDataURL(file);
                     imageInput.value = '';
@@ -426,18 +442,6 @@
                 }
 
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-
-            function loadMessages() {
-                messagesContainer.innerHTML = '';
-                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-                messages.forEach(displayMessage);
-            }
-
-            function saveMessage(message) {
-                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-                messages.push(message);
-                localStorage.setItem('chatMessages', JSON.stringify(messages));
             }
 
             messageInput.addEventListener('input', function() {
