@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             background: #000000;
             height: 100vh;
             display: flex;
@@ -36,6 +36,7 @@
             font-weight: 300;
             font-size: 24px;
             letter-spacing: 1px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         .input-group {
@@ -50,6 +51,7 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         .input-field {
@@ -59,7 +61,7 @@
             border: 1px solid #e0e0e0;
             border-radius: 2px;
             transition: border-color 0.3s;
-            font-family: inherit;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .input-field:focus {
@@ -81,6 +83,7 @@
             letter-spacing: 1px;
             font-weight: 500;
             margin-top: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         #login-btn:hover {
@@ -91,6 +94,7 @@
             color: #d32f2f;
             margin-top: 15px;
             font-size: 13px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         #chat-screen {
@@ -98,108 +102,84 @@
             width: 90%;
             max-width: 900px;
             height: 90vh;
-            background: #ffffff;
+            background: #000000;
+            border: 1px solid #333333;
             border-radius: 2px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             flex-direction: column;
         }
 
         #chat-header {
-            padding: 25px 30px;
-            background: #000000;
-            color: white;
-            border-radius: 2px 2px 0 0;
+            padding: 15px 20px;
+            background: #1a1a1a;
+            color: #00ff00;
+            border-bottom: 1px solid #333333;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         #chat-header h2 {
-            font-weight: 300;
-            font-size: 18px;
+            font-weight: 400;
+            font-size: 14px;
             letter-spacing: 1px;
         }
 
         #logout-btn {
-            padding: 8px 20px;
+            padding: 6px 16px;
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
+            border: 1px solid #333333;
+            color: #00ff00;
             border-radius: 2px;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         #logout-btn:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.5);
+            background: #1a1a1a;
+            border-color: #00ff00;
         }
 
         #messages {
             flex: 1;
-            padding: 30px;
+            padding: 20px;
             overflow-y: auto;
-            background: #fafafa;
+            background: #000000;
+            color: #00ff00;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         .message {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .message.own {
-            align-items: flex-end;
+            margin-bottom: 8px;
+            word-wrap: break-word;
         }
 
         .message-username {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 500;
+            color: #ffffff;
+            font-weight: bold;
         }
 
-        .message-content {
+        .message-text {
+            color: #00ff00;
+        }
+
+        .message-image {
             max-width: 60%;
-            padding: 12px 18px;
-            border-radius: 2px;
-            background: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            word-wrap: break-word;
-            border: 1px solid #e0e0e0;
-        }
-
-        .message.own .message-content {
-            background: #000000;
-            color: white;
-            border: 1px solid #000000;
-        }
-
-        .message-content img {
-            max-width: 100%;
-            border-radius: 2px;
             margin-top: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #333333;
             display: block;
         }
 
-        .message-time {
-            font-size: 10px;
-            color: #999;
-            margin-top: 6px;
-            letter-spacing: 0.3px;
-        }
-
         #input-area {
-            padding: 25px 30px;
-            background: #ffffff;
-            border-radius: 0 0 2px 2px;
-            border-top: 1px solid #e0e0e0;
+            padding: 20px;
+            background: #000000;
+            border-top: 1px solid #333333;
         }
 
         #input-container {
@@ -208,39 +188,47 @@
             align-items: center;
         }
 
+        #prompt-symbol {
+            color: #00ff00;
+            font-size: 14px;
+        }
+
         #message-input {
             flex: 1;
-            padding: 12px 18px;
-            border: 1px solid #e0e0e0;
+            padding: 8px 12px;
+            border: 1px solid #333333;
             border-radius: 2px;
             font-size: 14px;
             resize: none;
-            font-family: inherit;
+            font-family: 'Courier New', Courier, monospace;
+            background: #000000;
+            color: #00ff00;
         }
 
         #message-input:focus {
             outline: none;
-            border-color: #000000;
+            border-color: #00ff00;
         }
 
         .input-btn {
-            padding: 12px;
-            background: #000000;
-            color: white;
-            border: none;
+            padding: 8px;
+            background: #1a1a1a;
+            color: #00ff00;
+            border: 1px solid #333333;
             border-radius: 2px;
             cursor: pointer;
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s;
-            font-size: 16px;
+            transition: all 0.3s;
+            font-size: 14px;
         }
 
         .input-btn:hover {
-            background: #333333;
+            background: #2a2a2a;
+            border-color: #00ff00;
         }
 
         #image-input {
@@ -252,20 +240,25 @@
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f0f0f0;
+            background: #000000;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #cccccc;
-            border-radius: 4px;
+            background: #333333;
+            border-radius: 2px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #999999;
+            background: #444444;
+        }
+
+        ::selection {
+            background: #00ff00;
+            color: #000000;
         }
     </style>
 </head>
@@ -286,190 +279,195 @@
 
     <div id="chat-screen">
         <div id="chat-header">
-            <h2>CHAT ROOM</h2>
+            <h2>TERMINAL CHAT</h2>
             <button id="logout-btn">Logout</button>
         </div>
         <div id="messages"></div>
         <div id="input-area">
             <div id="input-container">
+                <span id="prompt-symbol">></span>
                 <textarea id="message-input" rows="1" placeholder="Type a message..."></textarea>
                 <label for="image-input" class="input-btn" title="Upload image">📎</label>
                 <input type="file" id="image-input" accept="image/*" />
-                <button id="send-btn" class="input-btn">➤</button>
+                <button id="send-btn" class="input-btn">↵</button>
             </div>
         </div>
     </div>
 
     <script>
-        const PASSWORD = "67";
-        let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-        let currentUsername = localStorage.getItem('currentUsername') || '';
-
-        const loginScreen = document.getElementById('login-screen');
-        const chatScreen = document.getElementById('chat-screen');
-        const usernameInput = document.getElementById('username-input');
-        const passwordInput = document.getElementById('password-input');
-        const loginBtn = document.getElementById('login-btn');
-        const errorMessage = document.getElementById('error-message');
-        const logoutBtn = document.getElementById('logout-btn');
-        const messagesContainer = document.getElementById('messages');
-        const messageInput = document.getElementById('message-input');
-        const sendBtn = document.getElementById('send-btn');
-        const imageInput = document.getElementById('image-input');
-
-        if (currentUsername) {
-            usernameInput.value = currentUsername;
+        const aboutBlank = window.open('about:blank', '_blank');
+        if (aboutBlank) {
+            aboutBlank.document.write(document.documentElement.outerHTML);
+            aboutBlank.document.close();
+            window.location.replace('https://www.google.com');
+        } else {
+            initChat();
         }
 
-        loginBtn.addEventListener('click', login);
-        passwordInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') login();
-        });
-        usernameInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') passwordInput.focus();
-        });
+        function initChat() {
+            const PASSWORD = "67";
+            let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+            let currentUsername = localStorage.getItem('currentUsername') || '';
 
-        function login() {
-            const username = usernameInput.value.trim();
-            const password = passwordInput.value;
+            const loginScreen = document.getElementById('login-screen');
+            const chatScreen = document.getElementById('chat-screen');
+            const usernameInput = document.getElementById('username-input');
+            const passwordInput = document.getElementById('password-input');
+            const loginBtn = document.getElementById('login-btn');
+            const errorMessage = document.getElementById('error-message');
+            const logoutBtn = document.getElementById('logout-btn');
+            const messagesContainer = document.getElementById('messages');
+            const messageInput = document.getElementById('message-input');
+            const sendBtn = document.getElementById('send-btn');
+            const imageInput = document.getElementById('image-input');
 
-            if (!username) {
-                errorMessage.textContent = 'Please enter a username';
-                usernameInput.focus();
-                return;
+            if (currentUsername) {
+                usernameInput.value = currentUsername;
             }
 
-            if (password === PASSWORD) {
-                currentUsername = username;
-                localStorage.setItem('currentUsername', currentUsername);
-                loginScreen.classList.add('hidden');
-                chatScreen.style.display = 'flex';
-                loadMessages();
-                messageInput.focus();
-                errorMessage.textContent = '';
-            } else {
-                errorMessage.textContent = 'Incorrect password';
+            loginBtn.addEventListener('click', login);
+            passwordInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') login();
+            });
+            usernameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') passwordInput.focus();
+            });
+
+            function login() {
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value;
+
+                if (!username) {
+                    errorMessage.textContent = 'Please enter a username';
+                    usernameInput.focus();
+                    return;
+                }
+
+                if (password === PASSWORD) {
+                    currentUsername = username;
+                    localStorage.setItem('currentUsername', currentUsername);
+                    loginScreen.classList.add('hidden');
+                    chatScreen.style.display = 'flex';
+                    loadMessages();
+                    messageInput.focus();
+                    errorMessage.textContent = '';
+                } else {
+                    errorMessage.textContent = 'Incorrect password';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            }
+
+            logoutBtn.addEventListener('click', () => {
+                chatScreen.style.display = 'none';
+                loginScreen.classList.remove('hidden');
                 passwordInput.value = '';
-                passwordInput.focus();
-            }
-        }
+                errorMessage.textContent = '';
+            });
 
-        logoutBtn.addEventListener('click', () => {
-            chatScreen.style.display = 'none';
-            loginScreen.classList.remove('hidden');
-            passwordInput.value = '';
-            errorMessage.textContent = '';
-        });
+            sendBtn.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
 
-        sendBtn.addEventListener('click', sendMessage);
-        messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
+            function sendMessage() {
+                const text = messageInput.value.trim();
+                if (!text) return;
 
-        function sendMessage() {
-            const text = messageInput.value.trim();
-            if (!text) return;
-
-            const message = {
-                text: text,
-                timestamp: new Date().toISOString(),
-                type: 'text',
-                username: currentUsername
-            };
-
-            if (isDiscordMediaUrl(text)) {
-                message.type = 'gif';
-                message.url = text;
-            }
-
-            messages.push(message);
-            saveMessages();
-            displayMessage(message);
-            messageInput.value = '';
-            messageInput.style.height = 'auto';
-        }
-
-        imageInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const message = {
-                        type: 'image',
-                        data: event.target.result,
-                        timestamp: new Date().toISOString(),
-                        username: currentUsername
-                    };
-                    messages.push(message);
-                    saveMessages();
-                    displayMessage(message);
+                const message = {
+                    text: text,
+                    timestamp: new Date().toISOString(),
+                    type: 'text',
+                    username: currentUsername
                 };
-                reader.readAsDataURL(file);
-                imageInput.value = '';
-            }
-        });
 
-        function isDiscordMediaUrl(text) {
-            return text.includes('discord') && 
-                   (text.includes('.gif') || text.includes('.png') || text.includes('.jpg') || text.includes('.webp'));
-        }
+                if (isDiscordMediaUrl(text)) {
+                    message.type = 'gif';
+                    message.url = text;
+                }
 
-        function displayMessage(message) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message';
-            
-            if (message.username === currentUsername) {
-                messageDiv.classList.add('own');
+                messages.push(message);
+                saveMessages();
+                displayMessage(message);
+                messageInput.value = '';
+                messageInput.style.height = 'auto';
             }
 
-            const usernameDiv = document.createElement('div');
-            usernameDiv.className = 'message-username';
-            usernameDiv.textContent = message.username;
+            imageInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const message = {
+                            type: 'image',
+                            data: event.target.result,
+                            timestamp: new Date().toISOString(),
+                            username: currentUsername
+                        };
+                        messages.push(message);
+                        saveMessages();
+                        displayMessage(message);
+                    };
+                    reader.readAsDataURL(file);
+                    imageInput.value = '';
+                }
+            });
 
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'message-content';
-
-            if (message.type === 'text') {
-                contentDiv.textContent = message.text;
-            } else if (message.type === 'gif') {
-                const img = document.createElement('img');
-                img.src = message.url;
-                img.alt = 'Discord GIF';
-                contentDiv.appendChild(img);
-            } else if (message.type === 'image') {
-                const img = document.createElement('img');
-                img.src = message.data;
-                img.alt = 'Uploaded image';
-                contentDiv.appendChild(img);
+            function isDiscordMediaUrl(text) {
+                return text.includes('discord') && 
+                       (text.includes('.gif') || text.includes('.png') || text.includes('.jpg') || text.includes('.webp'));
             }
 
-            const timeDiv = document.createElement('div');
-            timeDiv.className = 'message-time';
-            timeDiv.textContent = new Date(message.timestamp).toLocaleTimeString();
+            function displayMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
 
-            messageDiv.appendChild(usernameDiv);
-            messageDiv.appendChild(contentDiv);
-            messageDiv.appendChild(timeDiv);
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                if (message.type === 'text') {
+                    const usernameSpan = document.createElement('span');
+                    usernameSpan.className = 'message-username';
+                    usernameSpan.textContent = message.username;
+
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'message-text';
+                    textSpan.textContent = ' > ' + message.text;
+
+                    messageDiv.appendChild(usernameSpan);
+                    messageDiv.appendChild(textSpan);
+                } else if (message.type === 'gif' || message.type === 'image') {
+                    const usernameSpan = document.createElement('span');
+                    usernameSpan.className = 'message-username';
+                    usernameSpan.textContent = message.username + ' > [image]';
+                    messageDiv.appendChild(usernameSpan);
+
+                    const img = document.createElement('img');
+                    img.className = 'message-image';
+                    img.src = message.type === 'gif' ? message.url : message.data;
+                    img.alt = 'Image';
+                    messageDiv.appendChild(document.createElement('br'));
+                    messageDiv.appendChild(img);
+                }
+
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function loadMessages() {
+                messagesContainer.innerHTML = '';
+                messages.forEach(displayMessage);
+            }
+
+            function saveMessages() {
+                localStorage.setItem('chatMessages', JSON.stringify(messages));
+            }
+
+            messageInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+            });
         }
-
-        function loadMessages() {
-            messagesContainer.innerHTML = '';
-            messages.forEach(displayMessage);
-        }
-
-        function saveMessages() {
-            localStorage.setItem('chatMessages', JSON.stringify(messages));
-        }
-
-        messageInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-        });
     </script>
 </body>
 </html>
