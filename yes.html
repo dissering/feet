@@ -106,8 +106,13 @@
             color: #ffffff;
             border-bottom: 1px solid #333333;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        #status {
+            font-size: 11px;
+            color: #888888;
         }
 
         #logout-btn {
@@ -249,6 +254,7 @@
 
     <div id="chat-screen">
         <div id="chat-header">
+            <span id="status">Connected</span>
             <button id="logout-btn">Exit</button>
         </div>
         <div id="messages"></div>
@@ -275,7 +281,7 @@
 
         function initChat() {
             const PASSWORD = "67";
-            let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+            const CHANNEL_ID = 'terminal-chat-' + window.location.hostname;
             let currentUsername = localStorage.getItem('currentUsername') || '';
 
             const loginScreen = document.getElementById('login-screen');
@@ -290,10 +296,17 @@
             const sendBtn = document.getElementById('send-btn');
             const imageBtn = document.getElementById('image-btn');
             const imageInput = document.getElementById('image-input');
+            const statusEl = document.getElementById('status');
 
             if (currentUsername) {
                 usernameInput.value = currentUsername;
             }
+
+            const bc = new BroadcastChannel(CHANNEL_ID);
+
+            bc.onmessage = (event) => {
+                displayMessage(event.data);
+            };
 
             loginBtn.addEventListener('click', login);
             passwordInput.addEventListener('keypress', (e) => {
@@ -361,8 +374,8 @@
                     message.url = text;
                 }
 
-                messages.push(message);
-                saveMessages();
+                bc.postMessage(message);
+                saveMessage(message);
                 displayMessage(message);
                 messageInput.value = '';
                 messageInput.style.height = 'auto';
@@ -379,8 +392,8 @@
                             timestamp: new Date().toISOString(),
                             username: currentUsername
                         };
-                        messages.push(message);
-                        saveMessages();
+                        bc.postMessage(message);
+                        saveMessage(message);
                         displayMessage(message);
                     };
                     reader.readAsDataURL(file);
@@ -417,10 +430,13 @@
 
             function loadMessages() {
                 messagesContainer.innerHTML = '';
+                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
                 messages.forEach(displayMessage);
             }
 
-            function saveMessages() {
+            function saveMessage(message) {
+                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+                messages.push(message);
                 localStorage.setItem('chatMessages', JSON.stringify(messages));
             }
 
