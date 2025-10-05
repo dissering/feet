@@ -18,21 +18,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #00ff00;
+            color: #ffffff;
         }
 
         #login-screen {
-            background: #0c0c0c;
+            background: #000000;
             padding: 40px;
-            border: 1px solid #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            border: 1px solid #333333;
             max-width: 500px;
             width: 90%;
         }
 
         #login-screen h1 {
             margin-bottom: 30px;
-            color: #00ff00;
+            color: #ffffff;
             font-weight: 400;
             font-size: 16px;
             letter-spacing: 2px;
@@ -45,7 +44,7 @@
         }
 
         .input-line label {
-            color: #00ff00;
+            color: #ffffff;
             margin-right: 10px;
             min-width: 100px;
         }
@@ -56,15 +55,14 @@
             font-size: 14px;
             border: none;
             background: transparent;
-            color: #00ff00;
+            color: #ffffff;
             font-family: 'Courier New', Courier, monospace;
-            border-bottom: 1px solid #00ff00;
+            border-bottom: 1px solid #333333;
         }
 
         .input-field:focus {
             outline: none;
-            border-bottom: 1px solid #00ff00;
-            box-shadow: 0 1px 0 #00ff00;
+            border-bottom: 1px solid #ffffff;
         }
 
         #login-btn {
@@ -72,8 +70,8 @@
             padding: 10px;
             font-size: 14px;
             background: transparent;
-            color: #00ff00;
-            border: 1px solid #00ff00;
+            color: #ffffff;
+            border: 1px solid #333333;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
@@ -83,7 +81,7 @@
         }
 
         #login-btn:hover {
-            background: #00ff00;
+            background: #ffffff;
             color: #000000;
         }
 
@@ -98,33 +96,26 @@
             width: 90%;
             max-width: 1000px;
             height: 90vh;
-            background: #0c0c0c;
-            border: 1px solid #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            background: #000000;
+            border: 1px solid #333333;
             flex-direction: column;
         }
 
         #chat-header {
-            padding: 15px 20px;
+            padding: 10px 20px;
             background: #000000;
-            color: #00ff00;
-            border-bottom: 1px solid #00ff00;
+            color: #ffffff;
+            border-bottom: 1px solid #333333;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-        }
-
-        #chat-header h2 {
-            font-weight: 400;
-            font-size: 14px;
-            letter-spacing: 2px;
         }
 
         #logout-btn {
             padding: 5px 15px;
             background: transparent;
-            border: 1px solid #00ff00;
-            color: #00ff00;
+            border: 1px solid #333333;
+            color: #ffffff;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 11px;
@@ -134,7 +125,7 @@
         }
 
         #logout-btn:hover {
-            background: #00ff00;
+            background: #ffffff;
             color: #000000;
         }
 
@@ -142,8 +133,8 @@
             flex: 1;
             padding: 20px;
             overflow-y: auto;
-            background: #0c0c0c;
-            color: #00ff00;
+            background: #000000;
+            color: #ffffff;
             font-size: 14px;
             line-height: 1.8;
         }
@@ -154,22 +145,17 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        .message-line::before {
-            content: '$ ';
-            color: #00ff00;
-        }
-
         .message-image {
             max-width: 60%;
-            margin: 10px 0 10px 12px;
-            border: 1px solid #00ff00;
+            margin: 10px 0;
+            border: 1px solid #333333;
             display: block;
         }
 
         #input-area {
             padding: 15px 20px;
             background: #000000;
-            border-top: 1px solid #00ff00;
+            border-top: 1px solid #333333;
         }
 
         #input-container {
@@ -179,9 +165,8 @@
         }
 
         #prompt-symbol {
-            color: #00ff00;
+            color: #ffffff;
             font-size: 14px;
-            font-weight: bold;
         }
 
         #message-input {
@@ -192,7 +177,7 @@
             resize: none;
             font-family: 'Courier New', Courier, monospace;
             background: transparent;
-            color: #00ff00;
+            color: #ffffff;
         }
 
         #message-input:focus {
@@ -202,8 +187,8 @@
         .input-btn {
             padding: 5px 10px;
             background: transparent;
-            color: #00ff00;
-            border: 1px solid #00ff00;
+            color: #ffffff;
+            border: 1px solid #333333;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -214,7 +199,7 @@
         }
 
         .input-btn:hover {
-            background: #00ff00;
+            background: #ffffff;
             color: #000000;
         }
 
@@ -235,31 +220,22 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #00ff00;
+            background: #333333;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #00cc00;
+            background: #555555;
         }
 
         ::selection {
-            background: #00ff00;
+            background: #ffffff;
             color: #000000;
-        }
-
-        .cursor-blink {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
         }
     </style>
 </head>
 <body>
     <div id="login-screen">
-        <h1>TERMINAL LOGIN</h1>
+        <h1>LOGIN</h1>
         <div class="input-line">
             <label>username:</label>
             <input type="text" id="username-input" class="input-field" />
@@ -274,13 +250,12 @@
 
     <div id="chat-screen">
         <div id="chat-header">
-            <h2>TERMINAL CHAT SESSION</h2>
             <button id="logout-btn">Exit</button>
         </div>
         <div id="messages"></div>
         <div id="input-area">
             <div id="input-container">
-                <span id="prompt-symbol">$</span>
+                <span id="prompt-symbol">></span>
                 <textarea id="message-input" rows="1" placeholder=""></textarea>
                 <button class="input-btn" id="image-btn">IMG</button>
                 <input type="file" id="image-input" accept="image/*" />
